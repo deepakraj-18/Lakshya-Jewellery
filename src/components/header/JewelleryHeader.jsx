@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CategoryNav from './CategoryNav'
 import HeaderAction from './HeaderAction'
@@ -38,15 +38,68 @@ function HeaderButton({ children }) {
   )
 }
 
+const serviceOptions = [
+  { label: 'Try at Home', path: '/try-at-home' },
+  { label: 'Video Call', path: '/video-call' },
+]
+
 function ServicesButton({ label }) {
+  const navigate = useNavigate()
+  const [isOpen, setIsOpen] = useState(false)
+  const containerRef = useRef(null)
+
+  useEffect(() => {
+    if (!isOpen) return undefined
+
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isOpen])
+
+  const handleSelect = (path) => {
+    setIsOpen(false)
+    navigate(path)
+  }
+
   return (
-    <button
-      className="flex h-8 items-center gap-2 rounded border border-[#d9d9d9] bg-[#60195e] px-3 text-[.9rem] font-semibold text-white transition hover:bg-[#4f3267] sm:h-8 sm:px-5 sm:text-base"
-      type="button"
-    >
-      <span>{label}</span>
-      <ChevronDownIcon className="size-4" />
-    </button>
+    <div className="relative" ref={containerRef}>
+      <button
+        aria-expanded={isOpen}
+        aria-haspopup="menu"
+        className="flex h-8 items-center gap-2 rounded border border-[#d9d9d9] bg-[#60195e] px-3 text-[.9rem] font-semibold text-white transition hover:bg-[#4f3267] sm:h-8 sm:px-5 sm:text-base"
+        onClick={() => setIsOpen((open) => !open)}
+        type="button"
+      >
+        <span>{label}</span>
+        <ChevronDownIcon
+          className={`size-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+
+      {isOpen ? (
+        <div
+          className="absolute right-0 top-full z-50 mt-2 w-44 overflow-hidden rounded-lg border border-slate-200 bg-white py-1 shadow-lg"
+          role="menu"
+        >
+          {serviceOptions.map((option) => (
+            <button
+              className="block w-full px-4 py-2.5 text-left text-sm text-slate-700 transition hover:bg-slate-50"
+              key={option.path}
+              onClick={() => handleSelect(option.path)}
+              role="menuitem"
+              type="button"
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
   )
 }
 
