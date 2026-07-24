@@ -119,15 +119,6 @@ function StarIcon(props) {
   )
 }
 
-function SparkleIcon(props) {
-  return (
-    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-      <path d="M12 2c.6 3.8 2.2 5.4 6 6-3.8.6-5.4 2.2-6 6-.6-3.8-2.2-5.4-6-6 3.8-.6 5.4-2.2 6-6Z" />
-      <path d="M19 15c.3 1.9 1.1 2.7 3 3-1.9.3-2.7 1.1-3 3-.3-1.9-1.1-2.7-3-3 1.9-.3 2.7-1.1 3-3Z" />
-    </svg>
-  )
-}
-
 function CheckCircleIcon(props) {
   return (
     <svg
@@ -461,7 +452,7 @@ function FrequentlyBoughtTogether() {
   const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <div className="rounded-xl bg-purple-100 p-4 sm:p-5">
+    <div className="rounded-xl bg-purple-100 p-3 sm:p-5">
       <button
         className="flex w-full items-center justify-between text-left"
         onClick={() => setIsOpen((open) => !open)}
@@ -476,7 +467,7 @@ function FrequentlyBoughtTogether() {
       </button>
 
       {isOpen ? (
-        <div className="mt-4 flex items-start gap-3">
+        <div className="mt-4 flex flex-col items-start gap-3">
           <div className="relative shrink-0">
             <img
               alt={frequentlyBoughtTogether.name}
@@ -489,7 +480,7 @@ function FrequentlyBoughtTogether() {
           </div>
           <div>
             <div className="flex items-baseline gap-2">
-              <span className="text-sm font-bold text-slate-900">
+              <span className="text-sm font-bold text-[#3B0764]">
                 {frequentlyBoughtTogether.price}
               </span>
               <span className="text-xs text-slate-400 line-through">
@@ -518,8 +509,8 @@ function PromoAppCard() {
       <div className="relative flex items-start justify-between">
         <div className="min-w-0">
           <div className="flex items-center gap-2">
-            <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-white/15">
-              <SparkleIcon className="size-4 text-white" />
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-white">
+              <img alt="Lakshya" className="size-5 object-contain" src={logo} />
             </span>
             <div>
               <p className="text-sm font-bold !mb-0 leading-tight text-white">Lakshya App</p>
@@ -552,16 +543,16 @@ function PromoAppCard() {
 
 function CouponAppliedBanner() {
   return (
-    <div className="flex items-start justify-between gap-3 rounded-xl bg-purple-100 p-4">
+    <div className="flex items-center justify-between gap-3 rounded-xl bg-purple-100 p-3">
       <div className="flex items-start gap-2">
         <CheckCircleIcon className="mt-0.5 size-4 shrink-0 text-purple-600" />
         <div>
-          <p className="text-sm font-semibold text-purple-700">MAKING75OFF applied</p>
-          <p className="text-xs text-purple-500">✓ ₹14,163/- saved on this order</p>
+          <p className="text-sm !mb-1 font-semibold text-purple-700">MAKING75OFF applied</p>
+          <p className="text-xs !mb-0 text-purple-500">✓ ₹14,163/- saved on this order</p>
         </div>
       </div>
       <button
-        className="shrink-0 text-xs font-semibold text-purple-600 hover:underline"
+        className="shrink-0 !text-sm font-semibold text-purple-600 hover:underline"
         type="button"
       >
         Remove
@@ -572,13 +563,13 @@ function CouponAppliedBanner() {
 
 function DeliveryDetailsRow() {
   return (
-    <div className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-4">
+    <div className="flex items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white p-3">
       <div className="flex items-center gap-2">
         <PinIcon className="size-4 shrink-0 text-slate-400" />
         <span className="text-sm text-slate-700">Check Delivery &amp; Store Details</span>
       </div>
       <button
-        className="shrink-0 text-xs font-semibold text-purple-600 hover:underline"
+        className="shrink-0 !text-sm font-semibold text-purple-600 hover:underline"
         type="button"
       >
         Enter Pincode
@@ -599,8 +590,8 @@ function PriceSummaryCard() {
         ))}
       </div>
       <div className="mt-3 flex items-center justify-between border-t border-slate-200 pt-3">
-        <span className="text-sm font-bold text-slate-900">Total Cost</span>
-        <span className="text-lg font-bold text-slate-900">₹93,100</span>
+        <span className="text-md font-bold !text-[#332255]">Total Cost</span>
+        <span className="text-lg font-bold !text-[#332255]">₹93,100</span>
       </div>
     </div>
   )
@@ -615,11 +606,11 @@ function TrustBadgesBar() {
             <span
               className={`flex size-9 shrink-0 items-center justify-center rounded-full ${badgeClassName}`}
             >
-              <Icon className="size-4" />
+              <Icon className="size-5" />
             </span>
             <div>
-              <p className="text-xs font-semibold text-slate-800">{title}</p>
-              {subtitle ? <p className="text-[10px] text-slate-400">{subtitle}</p> : null}
+              <p className="text-sm !mb-0 font-semibold !text-[#332255]">{title}</p>
+              {subtitle ? <p className="text-xs !mb-0 !text-[#6B7280]">{subtitle}</p> : null}
             </div>
           </div>
         ))}
@@ -661,18 +652,18 @@ function CartPage() {
             <CartItemCard item={cartItems[1]} />
           </div>
 
-          <div className="flex flex-col gap-4 lg:col-span-4">
+          <div className="flex flex-col gap-3 lg:col-span-4">
             <PromoAppCard />
             <CouponAppliedBanner />
             <DeliveryDetailsRow />
             <PriceSummaryCard />
 
             <button
-              className="w-full !rounded-lg bg-purple-500 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-purple-600"
+              className="w-full !rounded-lg bg-[#A366FF] py-3.5 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-purple-600"
               onClick={() => navigate('/')}
               type="button"
             >
-              Place Order
+              PLACE ORDER
             </button>
           </div>
         </div>
