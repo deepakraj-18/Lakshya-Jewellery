@@ -275,7 +275,7 @@ function CartHeader() {
   const toggle = (
     <div className="pointer-events-auto inline-flex rounded-full bg-purple-100 p-1">
       <button
-        className={`whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-semibold transition sm:text-sm ${
+        className={`whitespace-nowrap !rounded-full px-4 py-1.5 text-xs font-semibold transition sm:text-sm ${
           activeTab === 'bag' ? '!bg-white !text-[#4f3267] shadow-sm' : '!text-[#4f3267]'
         }`}
         onClick={() => setActiveTab('bag')}
@@ -284,7 +284,7 @@ function CartHeader() {
         Shopping Bag (2)
       </button>
       <button
-        className={`whitespace-nowrap rounded-full px-4 py-1.5 text-xs font-semibold transition sm:text-sm ${
+        className={`whitespace-nowrap !rounded-full px-4 py-1.5 text-xs font-semibold transition sm:text-sm ${
           activeTab === 'trial' ? '!bg-white !text-[#4f3267] shadow-sm' : '!text-[#4f3267]'
         }`}
         onClick={() => setActiveTab('trial')}
@@ -309,7 +309,7 @@ function CartHeader() {
               <ChevronLeftIcon className="size-5" />
             </button>
             <Link to="/">
-              <img alt="Lakshya Jewellery logo" className="h-20 w-auto" src={logo} />
+              <img alt="Lakshya Jewellery logo" className="h-10 w-auto sm:h-14 lg:h-20" src={logo} />
             </Link>
           </div>
 
@@ -363,21 +363,21 @@ function CartHeader() {
 
 function VideoCallBanner() {
   return (
-    <div className="flex flex-col items-start justify-between gap-3 rounded-xl bg-emerald-50 p-4 sm:flex-row sm:items-center sm:p-5">
+    <div className="flex flex-col items-start justify-between gap-3 rounded-xl border border-[#DCFCE7] !bg-linear-to-t to-[#ECFEFF] from-[#F0FDF4] p-3 sm:flex-row sm:items-center sm:p-5">
       <div className="flex items-center gap-3">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500 text-white">
+        <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500 text-white">
           <VideoIcon className="size-5" />
-        </span>
+        </div>
         <div>
-          <p className="text-sm font-bold text-slate-900">See it Before You Buy It</p>
-          <p className="text-xs text-slate-500">Experience our designs in detail via video call</p>
+          <p className="text-sm font-bold text-[#166534] !mb-0">See it Before You Buy It</p>
+          <p className="text-xs !mb-0 !text-[#15803D]">Experience our designs in detail via video call</p>
         </div>
       </div>
       <button
-        className="w-full shrink-0 rounded-lg bg-emerald-500 px-5 py-2 text-xs font-bold uppercase tracking-wide text-white transition hover:bg-emerald-600 sm:w-auto"
+        className="w-full shrink-0 !rounded-lg bg-emerald-500 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white transition hover:bg-emerald-600 sm:w-auto"
         type="button"
       >
-        See it Live
+        SEE IT LIVE
       </button>
     </div>
   )
@@ -385,12 +385,12 @@ function VideoCallBanner() {
 
 function CartItemCard({ item }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5">
+    <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-4">
       <div className="flex gap-4">
         <div className="relative shrink-0">
           <img
             alt={item.name}
-            className="size-24 rounded-lg border border-slate-200 object-cover sm:size-28"
+            className="size-24 object-cover sm:size-28"
             src={item.image}
           />
           {item.badge ? (
@@ -403,7 +403,7 @@ function CartItemCard({ item }) {
 
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-2">
-            <p className="text-sm font-semibold text-slate-900">{item.name}</p>
+            <p className="text-sm !mb-0 font-semibold text-slate-900">{item.name}</p>
             <button
               aria-label={`Remove ${item.name}`}
               className="shrink-0 text-slate-400 transition hover:text-slate-600"
@@ -437,7 +437,7 @@ function CartItemCard({ item }) {
           </div>
 
           <button
-            className="mt-2 text-xs font-semibold text-purple-600 hover:underline"
+            className="mt-2 !text-sm font-semibold text-purple-600 hover:underline"
             type="button"
           >
             Check Delivery Date
@@ -487,7 +487,7 @@ function FrequentlyBoughtTogether() {
                 {frequentlyBoughtTogether.originalPrice}
               </span>
             </div>
-            <p className="text-xs text-slate-500">{frequentlyBoughtTogether.name}</p>
+            <p className="text-xs text-slate-500 !mb-0">{frequentlyBoughtTogether.name}</p>
           </div>
         </div>
       ) : null}
