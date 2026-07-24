@@ -119,6 +119,15 @@ function StarIcon(props) {
   )
 }
 
+function SparkleIcon(props) {
+  return (
+    <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+      <path d="M12 2c.6 3.8 2.2 5.4 6 6-3.8.6-5.4 2.2-6 6-.6-3.8-2.2-5.4-6-6 3.8-.6 5.4-2.2 6-6Z" />
+      <path d="M19 15c.3 1.9 1.1 2.7 3 3-1.9.3-2.7 1.1-3 3-.3-1.9-1.1-2.7-3-3 1.9-.3 2.7-1.1 3-3Z" />
+    </svg>
+  )
+}
+
 function CheckCircleIcon(props) {
   return (
     <svg
@@ -497,17 +506,46 @@ function FrequentlyBoughtTogether() {
 
 function PromoAppCard() {
   return (
-    <div className="rounded-xl bg-gradient-to-br from-[#7a2148] to-[#2a0f24] p-5 text-white">
-      <p className="text-xs font-semibold text-white/70">Lakshya App</p>
-      <p className="mt-2 text-sm">Get ₹500 off by completing your profile on the App</p>
-      <p className="mt-2 text-2xl font-extrabold">Free ₹500</p>
-      <button
-        className="mt-3 flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-[#4f3267]"
-        type="button"
-      >
-        Install App
-        <ArrowRightIcon className="size-3.5" />
-      </button>
+    <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#7a1f4b] to-[#1f0f22] p-3 text-white">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'repeating-conic-gradient(from 0deg at 75% 45%, rgba(255,255,255,0.12) 0deg 3deg, transparent 3deg 14deg)',
+        }}
+      />
+
+      <div className="relative flex items-start justify-between">
+        <div className="min-w-0">
+          <div className="flex items-center gap-2">
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-white/15">
+              <SparkleIcon className="size-4 text-white" />
+            </span>
+            <div>
+              <p className="text-sm font-bold !mb-0 leading-tight text-white">Lakshya App</p>
+              <p className="text-[10px] !mb-0 leading-tight text-white/60">Shop Anytime, Anywhere</p>
+            </div>
+          </div>
+
+          <p className="mt-2 max-w-[10rem] !font-bold text-xs text-white/90">
+            Get ₹500 off by completing your profile on the App
+          </p>
+
+          <button
+            className="mt-2 flex items-center gap-1.5 !rounded-lg bg-pink-200 px-3 py-1.5 !text-sm !font-bold !text-[#4f3267]"
+            type="button"
+          >
+            Install App
+            <ArrowRightIcon className="size-3.5" />
+          </button>
+        </div>
+
+        <div className="shrink-0">
+          <p className="text-md !mb-0 font-semibold italic text-white/90">Free</p>
+          <p className="!text-5xl !mb-0 font-extrabold leading-none text-pink-100">₹500</p>
+          <p className="!mb-0 !text-[13px] italic text-white/70">Just for you!</p>
+        </div>
+      </div>
     </div>
   )
 }
