@@ -12,7 +12,7 @@ function EverydayGoldSection() {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
         <div className="flex flex-col items-start gap-6 rounded-2xl bg-[#4f3267] p-8 sm:p-10 lg:p-12">
           <div>
-            <h2 className="font-serif text-3xl text-white sm:text-4xl">Everyday 22KT Gold</h2>
+            <h2 className="font-sans text-3xl text-white sm:text-4xl">Everyday 22KT Gold</h2>
             <p className="mt-3 max-w-sm text-base text-white/80">
               Timeless gold designs crafted for your daily elegance.
             </p>

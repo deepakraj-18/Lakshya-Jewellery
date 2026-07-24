@@ -13,7 +13,7 @@ const collections = [
 function LakshyaCollections() {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <h2 className="mb-8 text-center font-serif text-[26px] text-[#4f3267] sm:text-[30px]">
+      <h2 className="mb-8 text-center font-sans text-[26px] text-[#4f3267] sm:text-[30px]">
         Lakshya Collections
       </h2>
 
@@ -32,7 +32,7 @@ function LakshyaCollections() {
               <span className="text-xs uppercase tracking-[1.2px] text-white">
                 {collection.eyebrow}
               </span>
-              <span className="font-serif text-2xl text-white">{collection.name}</span>
+              <span className="font-sans text-2xl text-white">{collection.name}</span>
             </div>
           </div>
         ))}

@@ -15,7 +15,7 @@ const photos = [
 function Expressions() {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <h2 className="mb-8 text-center font-serif text-3xl !text-[#4F3267] sm:text-4xl">
+      <h2 className="mb-8 text-center font-sans text-3xl !text-[#4F3267] sm:text-4xl">
         Lakshya Expressions
       </h2>
 

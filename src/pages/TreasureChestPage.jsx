@@ -307,7 +307,7 @@ function PlanCard({ plan }) {
   const Icon = plan.icon
 
   return (
-    <div className={`relative rounded-2xl p-6 shadow-sm ${plan.cardClassName}`}>
+    <div className={`relative rounded-2xl p-6 shadow-xl/30 ${plan.cardClassName}`}>
       {plan.badge ? (
         <span className="absolute -top-3 right-6 rounded-full bg-orange-500 px-3 py-1 text-[10px] font-bold text-white">
           {plan.badge}
@@ -315,22 +315,22 @@ function PlanCard({ plan }) {
       ) : null}
 
       <div className="flex items-center gap-2">
-        <Icon className={`size-5 shrink-0 ${plan.iconClassName}`} />
-        <h3 className="text-base font-bold text-slate-900">{plan.name}</h3>
+        <Icon className={`size-8 shrink-0 ${plan.iconClassName}`} />
+        <h3 className="!text-md !mb-0 font-bold text-slate-900">{plan.name}</h3>
       </div>
 
       {plan.tagline ? (
-        <p className={`mt-2 text-xs font-bold ${plan.taglineClassName}`}>{plan.tagline}</p>
+        <p className={`mt-3 text-xs font-bold ${plan.taglineClassName}`}>{plan.tagline}</p>
       ) : null}
       {plan.tagPill ? (
-        <span className="mt-2 inline-block rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-600">
+        <span className="mt-3 inline-block rounded-full bg-purple-100 px-3 py-1 text-xs font-semibold text-purple-600">
           {plan.tagPill}
         </span>
       ) : null}
 
-      <ul className="mt-4 flex flex-col gap-2.5">
+      <ul className="mt-4 !pl-0 flex flex-col gap-2.5">
         {plan.features.map((feature) => (
-          <li className="flex items-start gap-2 text-sm text-slate-600" key={feature}>
+          <li className="flex items-start gap-2 !text-[.95rem] text-slate-600" key={feature}>
             <CheckIcon className="mt-0.5 size-4 shrink-0 text-emerald-500" />
             {feature}
           </li>
@@ -338,11 +338,11 @@ function PlanCard({ plan }) {
       </ul>
 
       <button
-        className="mx-auto mt-6 flex items-center gap-1 text-sm font-bold text-slate-900"
+        className="mx-auto mt-6 flex items-center gap-1 text-sm !font-bold text-slate-900"
         type="button"
       >
         <ChevronRightIcon className="size-4" />
-        Start Plan
+        START PLAN
       </button>
     </div>
   )
@@ -357,7 +357,7 @@ function HeroSection() {
           Get the 10th Month Free!
         </p>
 
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           {trustPoints.map((point) => (
             <TrustBadge key={point.label} {...point} />
           ))}
@@ -381,7 +381,7 @@ function CompareSection() {
 
   return (
     <section className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-      <h2 className="text-center text-xl font-bold text-slate-900 sm:text-2xl">
+      <h2 className="text-center text-xl !font-bold !text-[#4f3267] sm:text-2xl">
         Calculate &amp; Compare Plans
       </h2>
 
@@ -421,18 +421,18 @@ function CompareSection() {
         <table className="w-full table-fixed border-collapse text-left">
           <thead>
             <tr>
-              <th className="w-[38%] pb-3 text-xs font-semibold text-slate-500 sm:text-sm">
+              <th className="w-[38%] pb-3 !text-md !font-bold text-slate-500 sm:text-sm">
                 Benefits
               </th>
-              <th className="w-[31%] px-1 pb-3 sm:px-2">
-                <span className="flex items-center justify-center gap-1 rounded-t-lg bg-amber-500 py-2 text-[11px] font-bold text-white sm:gap-1.5 sm:text-sm">
-                  <CrownIcon className="size-3.5 shrink-0 sm:size-4" />
+              <th className="w-[20%] px-1 sm:px-2">
+                <span className="flex items-center justify-center gap-1 rounded-t-lg bg-[#C69C54] py-3 !text-lg font-bold text-white sm:gap-1.5 sm:text-sm">
+                  <CrownIcon className="size-3.5 shrink-0 sm:size-6" />
                   EDGE
                 </span>
               </th>
-              <th className="w-[31%] px-1 pb-3 sm:px-2">
-                <span className="flex items-center justify-center gap-1 rounded-t-lg bg-purple-600 py-2 text-[11px] font-bold text-white sm:gap-1.5 sm:text-sm">
-                  <DiamondIcon className="size-3.5 shrink-0 sm:size-4" />
+              <th className="w-[20%] px-1 sm:px-2">
+                <span className="flex items-center justify-center gap-1 rounded-t-lg bg-[#8E44AD] py-3 !text-lg font-bold text-white sm:gap-1.5 sm:text-sm">
+                  <DiamondIcon className="size-3.5 shrink-0 sm:size-6" />
                   ICON
                 </span>
               </th>
@@ -441,9 +441,9 @@ function CompareSection() {
           <tbody>
             {compareRows.map((row) => (
               <tr className="border-t border-slate-100" key={row.label}>
-                <td className="py-4 pr-1 align-top sm:pr-2">
+                <td className="py-3 pr-1 align-top sm:pr-2">
                   <p
-                    className={`text-xs sm:text-sm ${row.bold ? 'font-bold text-slate-900' : 'text-slate-600'}`}
+                    className={`text-sm sm:text-sm !font-semibold !mb-0 ${row.bold ? '!font-bold !text-slate-900' : ' !text-[#231535]'}`}
                   >
                     {row.label}
                   </p>
@@ -462,7 +462,7 @@ function CompareSection() {
                     </div>
                   ) : null}
                 </td>
-                <td className="px-1 py-4 text-center align-top sm:px-2">
+                <td className="px-1 py-3 text-center align-top sm:px-2">
                   <span
                     className={`text-xs sm:text-sm ${row.bold ? 'font-bold' : 'font-medium'} ${
                       row.edgeClassName || 'text-slate-800'
@@ -471,9 +471,9 @@ function CompareSection() {
                     {row.slider ? `₹${edgeGoldReturn.toLocaleString('en-IN')}*` : row.edge}
                   </span>
                 </td>
-                <td className="px-1 py-4 text-center align-top sm:px-2">
+                <td className="px-1 py-3 text-center align-top sm:px-2">
                   <span
-                    className={`text-xs sm:text-sm ${row.bold ? 'font-bold' : 'font-medium'} ${
+                    className={`text-xs sm:text-sm ${row.bold ? '!font-bold' : 'font-medium'} ${
                       row.iconMuted ? 'text-slate-400' : row.iconClassName || 'text-slate-800'
                     }`}
                   >
@@ -531,7 +531,7 @@ function FaqSection() {
       <div className="flex justify-center">
         <div className="inline-flex rounded-full bg-slate-100 p-1">
           <button
-            className={`!rounded-full px-5 py-1.5 text-sm font-semibold transition ${
+            className={`!rounded-full px-5 py-1.5 text-ms !font-semibold transition ${
               activeTab === 'faqs' ? '!bg-white !text-[#4f3267] shadow-sm' : '!text-slate-500'
             }`}
             onClick={() => setActiveTab('faqs')}
@@ -540,7 +540,7 @@ function FaqSection() {
             FAQs
           </button>
           <button
-            className={`!rounded-full px-5 py-1.5 text-sm font-semibold transition ${
+            className={`!rounded-full px-5 py-1.5 text-sm !font-semibold transition ${
               activeTab === 'terms' ? '!bg-white !text-[#4f3267] shadow-sm' : '!text-slate-500'
             }`}
             onClick={() => setActiveTab('terms')}
@@ -555,7 +555,7 @@ function FaqSection() {
         <div className="mt-8 flex flex-col gap-8">
           {faqCategories.map(({ category, faqs }) => (
             <div key={category}>
-              <h3 className="text-sm font-bold text-slate-900">{category}</h3>
+              <h3 className="!text-[1rem] font-bold !text-[#231535]">{category}</h3>
               <div className="mt-2 rounded-xl bg-slate-50 px-4">
                 {faqs.map(({ question, answer }, index) => {
                   const key = `${category}-${index}`
@@ -589,7 +589,7 @@ function FaqSection() {
 
 function TreasureChestPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen !font-sans bg-white">
       <TreasureChestHeader />
       <HeroSection />
       <CompareSection />

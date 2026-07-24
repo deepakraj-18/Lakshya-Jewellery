@@ -10,7 +10,7 @@ function JoinInsider() {
       <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-10 px-4 py-10 sm:px-6 lg:flex-row lg:items-center lg:px-8">
         <div className="flex w-full max-w-xl flex-col gap-6">
           <div>
-            <h2 className="font-serif text-3xl text-white sm:text-4xl">Join Lakshya Insider</h2>
+            <h2 className="font-sans text-3xl text-white sm:text-4xl">Join Lakshya Insider</h2>
             <p className="mt-3 text-base text-white/80">
               Receive special offers, early access to new launches and more.
             </p>
@@ -54,7 +54,7 @@ function JoinInsider() {
         </div>
 
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <span className="font-serif text-4xl text-white sm:text-5xl">5 Million+</span>
+          <span className="font-sans text-4xl text-white sm:text-5xl">5 Million+</span>
           <span className="mt-2 text-sm uppercase tracking-wide text-white/80">
             Customers Worldwide
           </span>
