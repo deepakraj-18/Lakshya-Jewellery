@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { TryAtHomeIcon } from '../components/header/HeaderIcons'
 
 function PlusIcon(props) {
@@ -56,6 +56,7 @@ function formatPrice(value) {
 }
 
 function WishlistPage() {
+  const nav = useNavigate()
   return (
     <main className="min-h-screen bg-[#f4f0fc]">
       <div className="mx-auto">
@@ -77,6 +78,7 @@ function WishlistPage() {
               <div className="flex flex-wrap items-center gap-3">
                 <button
                   className="flex items-center gap-1.5 !rounded-lg bg-emerald-100 px-3 py-2 !text-xs !font-semibold uppercase tracking-wide text-emerald-700 transition hover:bg-emerald-200"
+                  onClick={() => nav('/video-call')}
                   type="button"
                 >
                   <PlusIcon className="size-3.5" />
@@ -84,6 +86,7 @@ function WishlistPage() {
                 </button>
                 <button
                   className="flex items-center gap-1.5 !rounded-lg bg-purple-100 px-3 py-2 !text-xs !font-semibold uppercase tracking-wide text-purple-600 transition hover:bg-purple-200"
+                  onClick={() => nav('/try-at-home')}
                   type="button"
                 >
                   <TryAtHomeIcon className="size-3.5" />
