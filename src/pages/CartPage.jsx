@@ -119,6 +119,16 @@ function StarIcon(props) {
   )
 }
 
+function MastercardMark(props) {
+  return (
+    <svg viewBox="0 0 36 22" {...props}>
+      <circle cx="14" cy="11" fill="#eb001b" r="9" />
+      <circle cx="22" cy="11" fill="#f79e1b" r="9" />
+      <path d="M18 4a9 9 0 0 1 0 14 9 9 0 0 1 0-14Z" fill="#ff5f00" />
+    </svg>
+  )
+}
+
 function CheckCircleIcon(props) {
   return (
     <svg
@@ -266,7 +276,12 @@ const trustBadges = [
   { icon: AwardIcon, title: 'One Year Warranty', badgeClassName: 'bg-yellow-100 text-yellow-600' },
 ]
 
-const paymentMethods = ['VISA', 'Mastercard', 'PayPal', 'RuPay']
+const paymentMethods = [
+  { label: 'VISA', className: 'bg-white text-[#1a1f71] italic' },
+  { label: '', className: 'bg-white', icon: MastercardMark },
+  { label: 'PayPal', className: 'bg-[#003087] text-white italic' },
+  { label: 'RuPay', className: 'bg-white text-slate-700' },
+]
 
 function CartHeader() {
   const navigate = useNavigate()
@@ -617,12 +632,12 @@ function TrustBadgesBar() {
       </div>
 
       <div className="flex items-center gap-2">
-        {paymentMethods.map((label) => (
+        {paymentMethods.map(({ label, className, icon: Icon }) => (
           <span
-            className="flex h-6 items-center justify-center rounded border border-slate-200 px-2 text-[8px] font-bold text-slate-400"
-            key={label}
+            className={`flex h-6 min-w-10 items-center justify-center rounded border border-slate-200 px-2 text-[9px] font-extrabold ${className}`}
+            key={label || 'mastercard'}
           >
-            {label}
+            {Icon ? <Icon className="h-4 w-6" /> : label}
           </span>
         ))}
       </div>
