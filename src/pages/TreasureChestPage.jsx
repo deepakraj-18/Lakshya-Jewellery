@@ -269,7 +269,7 @@ function TreasureChestHeader() {
             <ChevronLeftIcon className="size-5" />
           </button>
           <Link to="/">
-            <img alt="Lakshya Jewellery logo" className="h-8 w-auto sm:h-10" src={logo} />
+            <img alt="Lakshya Jewellery logo" className="h-10 w-auto sm:h-14 lg:h-16" src={logo} />
           </Link>
         </div>
 

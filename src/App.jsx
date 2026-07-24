@@ -11,6 +11,7 @@ import SignInPage from './pages/SignInPage'
 import WishlistPage from './pages/WishlistPage'
 import CartPage from './pages/CartPage'
 import TreasureChestPage from './pages/TreasureChestPage'
+import DigitalGoldPage from './pages/DigitalGoldPage'
 
 function App() {
   return (
@@ -23,9 +24,10 @@ function App() {
         <Route element={<WishlistPage />} path="/wishlist" />
       </Route>
       <Route element={<CartPage />} path="/bag" />
-      <Route element={<TreasureChestPage />} path="/treasure-chest" />
       <Route element={<TryAtHomePage />} path="/try-at-home" />
       <Route element={<VideoCallPage />} path="/video-call" />
+      <Route element={<TreasureChestPage />} path="/treasure-chest" />
+      <Route element={<DigitalGoldPage />} path="/digital-gold" />
     </Routes>
   )
 }
