@@ -27,10 +27,11 @@ function LogoMark() {
   )
 }
 
-function HeaderButton({ children }) {
+function HeaderButton({ children, onClick }) {
   return (
     <button
-      className="flex h-8 items-center gap-2 rounded bg-[#60195e] px-3 !text-[.9rem] font-semibold text-white transition hover:bg-[#4f3267] sm:h-8 sm:px-5 sm:text-base"
+      className="flex h-8 w-full items-center justify-center gap-2 rounded bg-[#60195e] px-3 !text-[.9rem] font-semibold text-white transition hover:bg-[#4f3267] sm:h-8 sm:px-5 sm:text-base"
+      onClick={onClick}
       type="button"
     >
       {children}
@@ -38,9 +39,26 @@ function HeaderButton({ children }) {
   )
 }
 
+function VideoIcon(props) {
+  return (
+    <svg
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.8"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <rect height="12" rx="2" width="14" x="3" y="6" />
+      <path d="m17 10 4-2.5v9L17 14" />
+    </svg>
+  )
+}
+
 const serviceOptions = [
-  { label: 'Try at Home', path: '/try-at-home' },
-  { label: 'Video Call', path: '/video-call' },
+  { label: 'Try at Home', path: '/try-at-home', icon: TryAtHomeIcon },
+  { label: 'Video Call', path: '/video-call', icon: VideoIcon },
 ]
 
 function ServicesButton({ label }) {
@@ -83,19 +101,16 @@ function ServicesButton({ label }) {
 
       {isOpen ? (
         <div
-          className="absolute right-0 top-full z-50 mt-2 w-44 overflow-hidden rounded-lg border border-slate-200 bg-white py-1 shadow-lg"
+          className="absolute left-0 top-full z-50 mt-2 flex w-52 flex-col gap-2 rounded-lg border border-slate-200 bg-white p-2 shadow-lg lg:left-auto lg:right-0"
           role="menu"
         >
           {serviceOptions.map((option) => (
-            <button
-              className="block w-full px-4 py-2.5 text-left text-sm text-slate-700 transition hover:bg-slate-50"
-              key={option.path}
-              onClick={() => handleSelect(option.path)}
-              role="menuitem"
-              type="button"
-            >
-              {option.label}
-            </button>
+            <div key={option.path} role="menuitem">
+              <HeaderButton onClick={() => handleSelect(option.path)}>
+                <option.icon className="size-4" />
+                <span>{option.label}</span>
+              </HeaderButton>
+            </div>
           ))}
         </div>
       ) : null}
@@ -103,7 +118,7 @@ function ServicesButton({ label }) {
   )
 }
 
-function MobileTopRow({ primaryAction, serviceLabel, searchPlaceholder, actions, onActionClick }) {
+function MobileTopRow({ serviceLabel, searchPlaceholder, actions, onActionClick }) {
   return (
     <div className="flex flex-col gap-3 lg:hidden">
       <div className="flex items-center gap-3">
@@ -116,10 +131,6 @@ function MobileTopRow({ primaryAction, serviceLabel, searchPlaceholder, actions,
       </div>
 
       <div className="flex flex-wrap items-center gap-2 px-1">
-        <HeaderButton>
-          <TryAtHomeIcon className="size-4" />
-          <span>{primaryAction}</span>
-        </HeaderButton>
         <ServicesButton label={serviceLabel} />
 
         <div className="flex flex-wrap items-center gap-2">
@@ -141,7 +152,6 @@ function MobileTopRow({ primaryAction, serviceLabel, searchPlaceholder, actions,
 function DesktopTopRow({
   brand,
   searchPlaceholder,
-  primaryAction,
   actions,
   serviceLabel,
   onActionClick,
@@ -158,10 +168,6 @@ function DesktopTopRow({
       </div>
 
       <div className="flex flex-shrink-0 items-center gap-4">
-        <HeaderButton>
-          <TryAtHomeIcon className="size-4" />
-          <span>{primaryAction}</span>
-        </HeaderButton>
         <div className="flex items-center gap-3">
           {actions.map((action) => (
             <HeaderAction
@@ -182,7 +188,6 @@ function DesktopTopRow({
 function JewelleryHeader({
   brand,
   searchPlaceholder,
-  primaryAction,
   actions,
   promoItems,
   categories,
@@ -213,7 +218,6 @@ function JewelleryHeader({
         <MobileTopRow
           actions={actions}
           onActionClick={handleActionClick}
-          primaryAction={primaryAction}
           serviceLabel={serviceLabel}
           searchPlaceholder={searchPlaceholder}
         />
@@ -222,7 +226,6 @@ function JewelleryHeader({
           actions={actions}
           brand={brand}
           onActionClick={handleActionClick}
-          primaryAction={primaryAction}
           searchPlaceholder={searchPlaceholder}
           serviceLabel={serviceLabel}
         />
@@ -247,7 +250,6 @@ export function buildHeaderProps() {
       subtitle: 'Jewellery',
     },
     searchPlaceholder: 'Search for jewellery, products, collections...',
-    primaryAction: 'Try At Home',
     actions: [
       { label: 'Find Store', icon: <PinIcon className="size-5" /> },
       { label: 'Sign In', icon: <UserIcon className="size-5" /> },
