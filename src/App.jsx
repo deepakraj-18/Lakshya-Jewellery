@@ -10,6 +10,7 @@ import ProductDetails from './pages/ProductDetails'
 import SignInPage from './pages/SignInPage'
 import WishlistPage from './pages/WishlistPage'
 import CartPage from './pages/CartPage'
+import TreasureChestPage from './pages/TreasureChestPage'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route element={<WishlistPage />} path="/wishlist" />
       </Route>
       <Route element={<CartPage />} path="/bag" />
+      <Route element={<TreasureChestPage />} path="/treasure-chest" />
     </Routes>
   )
 }
